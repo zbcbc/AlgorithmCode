@@ -1,7 +1,5 @@
 package 堆;
 
-import com.sun.org.apache.bcel.internal.generic.SWAP;
-
 import java.io.*;
 
 /**
@@ -22,17 +20,18 @@ public class HeapSort2 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer in = new StreamTokenizer(br);
         PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
-        while (in.nextToken() != StreamTokenizer.TT_EOF){
+        in.nextToken();
             n = (int) in.nval;
             for(int i = 0; i < n; i++){
-                arr[i] = (int) in.nextToken();
+                in.nextToken();
+                arr[i] = (int) in.nval;
             }
             heapsort();
             for(int i = 0; i < n - 1; i++){
                 out.print(arr[i] + " ");
             }
             out.println(arr[n - 1]);
-        }
+
         out.flush();
         out.close();
         br.close();
@@ -54,6 +53,19 @@ public class HeapSort2 {
         while(arr[i] < arr[(i - 1) / 2]){
             swap(i, (i - 1) / 2);
             i = (i - 1) / 2;
+        }
+    }
+
+    public static void heapify(int i, int size){
+        int left = 2 * i + 1;
+        while(left < size){
+            int best = left + 1 < size && arr[left + 1] < arr[left] ? left + 1 : left;
+            best = arr[best] < arr[i] ? best : i;
+            if(best == i){
+                break;
+            }
+            swap(best, i);
+            left = 2 * i + 1;
         }
     }
 
