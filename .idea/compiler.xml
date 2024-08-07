@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="JUC" />
         <module name="Stream" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="JUC" target="1.8" />
       <module name="webtest" target="1.8" />
     </bytecodeTargetLevel>
   </component>
